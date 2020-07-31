@@ -1,4 +1,4 @@
-import HashProviderInterface from "../models/HashProviderInterface"
+import HashProviderInterface from "./HashProviderInterface"
 
 class FakeHashProvider implements HashProviderInterface {
   public async generateHash(payload: string): Promise<string> {

@@ -5,7 +5,7 @@ import v1Routes from "./v1"
 const routes = Router()
 
 routes.get("/", (request, response) => {
-  console.log(v1Routes.stack)
+  // console.log(v1Routes.stack)
 
   return response.json(JSON.stringify("v1Routes"))
 })

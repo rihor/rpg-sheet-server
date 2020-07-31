@@ -17,5 +17,6 @@
     "emitDecoratorMetadata": true,
     "forceConsistentCasingInFileNames": true,
     "allowJs": true
-  }
+  },
+  "exclude": ["coverage", "dist", "jest.config.js"]
 }

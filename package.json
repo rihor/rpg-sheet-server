@@ -8,7 +8,7 @@
   "scripts": {
     "build": "tsc",
     "start": "ts-node src/index.ts",
-    "start:dev": "ts-node-dev -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules src/shared/infra/http/server.ts",
+    "start:dev": "ts-node-dev -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules src/shared/infra/web/index.ts",
     "typeorm": "ts-node-dev -r tsconfig-paths/register ./node_modules/typeorm/cli.js",
     "test": "jest"
   },
@@ -20,6 +20,7 @@
     "@types/jsonwebtoken": "^8.5.0",
     "@types/mongodb": "^3.5.25",
     "@types/node": "^8.0.29",
+    "@types/socket.io": "^2.1.10",
     "@typescript-eslint/eslint-plugin": "^3.7.1",
     "@typescript-eslint/parser": "^3.7.1",
     "eslint": "^7.5.0",
@@ -51,6 +52,7 @@
     "mysql": "^2.14.1",
     "pg": "^8.3.0",
     "reflect-metadata": "^0.1.10",
+    "socket.io": "^2.3.0",
     "tsyringe": "^4.3.0",
     "typeorm": "0.2.25",
     "uuidv4": "^6.2.0"
