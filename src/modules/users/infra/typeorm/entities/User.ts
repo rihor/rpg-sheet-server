@@ -1,17 +1,9 @@
-import {
-  Entity,
-  Column,
-  PrimaryGeneratedColumn,
-  CreateDateColumn,
-  UpdateDateColumn,
-} from "typeorm"
+import { Entity, Column } from "typeorm"
 import { Exclude } from "class-transformer"
+import Base from "@shared/infra/typeorm/entities/Base"
 
 @Entity("users")
-class User {
-  @PrimaryGeneratedColumn("uuid")
-  id: string
-
+class User extends Base {
   @Column()
   name: string
 
@@ -21,12 +13,6 @@ class User {
   @Column()
   @Exclude()
   password: string
-
-  @CreateDateColumn()
-  created_at: Date
-
-  @UpdateDateColumn()
-  updated_at: Date
 }
 
 export default User
