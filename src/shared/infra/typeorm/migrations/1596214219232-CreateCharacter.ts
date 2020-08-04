@@ -30,6 +30,11 @@ export class CreateCharacter1596214219232 implements MigrationInterface {
             isNullable: true,
           },
           {
+            name: "worlds_id",
+            type: "uuid",
+            isNullable: true,
+          },
+          {
             name: "created_at",
             type: "timestamp",
             default: "now()",
@@ -46,6 +51,14 @@ export class CreateCharacter1596214219232 implements MigrationInterface {
             referencedTableName: "users",
             referencedColumnNames: ["id"],
             columnNames: ["users_id"],
+            onDelete: "SET NULL",
+            onUpdate: "CASCADE",
+          },
+          {
+            name: "CharacterWorld",
+            referencedTableName: "worlds",
+            referencedColumnNames: ["id"],
+            columnNames: ["worlds_id"],
             onDelete: "SET NULL",
             onUpdate: "CASCADE",
           },
