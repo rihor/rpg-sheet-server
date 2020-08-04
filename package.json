@@ -10,6 +10,9 @@
     "start": "ts-node src/shared/infra/web/index.ts",
     "start:dev": "tsnd -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules src/shared/infra/web/index.ts",
     "typeorm": "tsnd -r tsconfig-paths/register ./node_modules/typeorm/cli.js",
+    "migration:run": "yarn typeorm migration:run",
+    "migration:revert": "yarn typeorm migration:revert",
+    "migration:show": "yarn typeorm migration:show",
     "test": "jest"
   },
   "devDependencies": {
