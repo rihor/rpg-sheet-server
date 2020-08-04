@@ -3,7 +3,6 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
 } from "typeorm"
-import { validate } from "class-validator"
 
 abstract class Base {
   @PrimaryGeneratedColumn("uuid")
