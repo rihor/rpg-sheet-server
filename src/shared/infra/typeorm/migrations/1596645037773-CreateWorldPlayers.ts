@@ -1,12 +1,12 @@
 import { MigrationInterface, QueryRunner, Table } from "typeorm"
 
-export class CreateWorld1596213290169 implements MigrationInterface {
-  name = "CreateWorld1596213290169"
+export class CreateWorldPlayers1596645037773 implements MigrationInterface {
+  name = "CreateWorldPlayers1596645037773"
 
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
-        name: "worlds",
+        name: "worlds_players",
         columns: [
           {
             name: "id",
@@ -16,25 +16,11 @@ export class CreateWorld1596213290169 implements MigrationInterface {
             default: "uuid_generate_v4()",
           },
           {
-            name: "title",
-            type: "varchar",
-          },
-          {
-            name: "password",
-            type: "varchar",
-          },
-          {
-            name: "description",
-            type: "varchar",
-            isNullable: true,
-          },
-          {
-            name: "users_id",
+            name: "worlds_id",
             type: "uuid",
-            isNullable: true,
           },
           {
-            name: "rules_id",
+            name: "player_id",
             type: "uuid",
           },
           {
@@ -50,11 +36,19 @@ export class CreateWorld1596213290169 implements MigrationInterface {
         ],
         foreignKeys: [
           {
-            name: "WorldOwner",
+            name: "WorldPlayer",
             referencedTableName: "users",
             referencedColumnNames: ["id"],
-            columnNames: ["users_id"],
-            onDelete: "SET NULL",
+            columnNames: ["player_id"],
+            onDelete: "CASCADE",
+            onUpdate: "CASCADE",
+          },
+          {
+            name: "PlayerWorld",
+            referencedTableName: "worlds",
+            referencedColumnNames: ["id"],
+            columnNames: ["worlds_id"],
+            onDelete: "CASCADE",
             onUpdate: "CASCADE",
           },
         ],
@@ -63,6 +57,6 @@ export class CreateWorld1596213290169 implements MigrationInterface {
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable("worlds")
+    await queryRunner.dropTable("worlds_players")
   }
 }
