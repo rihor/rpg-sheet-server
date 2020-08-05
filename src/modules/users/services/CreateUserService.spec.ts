@@ -1,6 +1,7 @@
 import AppError from "@shared/errors/AppError"
-import FakeUsersRepository from "../repositories/FakeUsersRepository"
+
 import FakeHashProvider from "../providers/HashProvider/FakeHashProvider"
+import FakeUsersRepository from "../repositories/FakeUsersRepository"
 import CreateUserService from "./CreateUserService"
 
 let fakeUsersRepository: FakeUsersRepository

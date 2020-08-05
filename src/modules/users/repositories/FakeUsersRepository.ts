@@ -1,8 +1,8 @@
 import { uuid } from "uuidv4"
 
-import UsersRepositoryInterface from "@modules/users/repositories/UsersRepositoryInterface"
-import User from "@modules/users/infra/typeorm/entities/User"
 import CreateUserDTO from "@modules/users/dtos/CreateUserDTO"
+import User from "@modules/users/infra/typeorm/entities/User"
+import UsersRepositoryInterface from "@modules/users/repositories/UsersRepositoryInterface"
 
 export default class FakeUsersRepository implements UsersRepositoryInterface {
   private users: User[] = []

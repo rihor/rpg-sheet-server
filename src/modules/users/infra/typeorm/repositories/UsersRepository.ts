@@ -1,10 +1,11 @@
-import { getRepository, Repository, Not } from "typeorm"
+import { getRepository, Repository } from "typeorm"
 
-import IUsersRepository from "@modules/users/repositories/UsersRepositoryInterface"
-import ICreateUserDTO from "@modules/users/dtos/CreateUserDTO"
+import CreateUserDTO from "@modules/users/dtos/CreateUserDTO"
+import UsersRepositoryInterface from "@modules/users/repositories/UsersRepositoryInterface"
+
 import User from "../entities/User"
 
-class UsersRepository implements IUsersRepository {
+class UsersRepository implements UsersRepositoryInterface {
   private ormRepository: Repository<User>
 
   constructor() {
@@ -23,7 +24,7 @@ class UsersRepository implements IUsersRepository {
     return user
   }
 
-  public async create(userData: ICreateUserDTO): Promise<User> {
+  public async create(userData: CreateUserDTO): Promise<User> {
     const user = await this.ormRepository.create(userData)
 
     await this.ormRepository.save(user)

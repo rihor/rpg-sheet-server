@@ -1,9 +1,10 @@
-import { injectable, inject } from "tsyringe"
 import { sign } from "jsonwebtoken"
+import { injectable, inject } from "tsyringe"
 
 import authConfig from "@configs/auth"
-import AppError from "@shared/errors/AppError"
 import UsersRepositoryInterface from "@modules/users/repositories/UsersRepositoryInterface"
+import AppError from "@shared/errors/AppError"
+
 import User from "../infra/typeorm/entities/User"
 import HashProviderInterface from "../providers/HashProvider/HashProviderInterface"
 

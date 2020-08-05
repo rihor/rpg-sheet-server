@@ -1,4 +1,5 @@
 import { Request, Response, NextFunction } from "express"
+
 import AppError from "@shared/errors/AppError"
 
 export default function errorHandler(

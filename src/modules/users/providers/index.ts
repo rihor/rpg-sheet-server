@@ -1,7 +1,7 @@
 import { container } from "tsyringe"
 
-import HashProviderInterface from "./HashProvider/HashProviderInterface"
 import BCrypyHashProvider from "./HashProvider/BCryptHashProvider"
+import HashProviderInterface from "./HashProvider/HashProviderInterface"
 
 container.registerSingleton<HashProviderInterface>(
   "HashProvider",

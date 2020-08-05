@@ -1,4 +1,5 @@
 import AppError from "@shared/errors/AppError"
+
 import FakeUsersRepository from "../repositories/FakeUsersRepository"
 import ShowProfileService from "./ShowProfileService"
 

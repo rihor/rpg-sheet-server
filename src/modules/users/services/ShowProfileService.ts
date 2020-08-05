@@ -1,6 +1,7 @@
 import { inject, injectable } from "tsyringe"
 
 import AppError from "@shared/errors/AppError"
+
 import User from "../infra/typeorm/entities/User"
 import UsersRepositoryInterface from "../repositories/UsersRepositoryInterface"
 
