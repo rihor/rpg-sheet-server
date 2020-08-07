@@ -17,13 +17,13 @@ class User extends Base {
   @Exclude()
   password: string
 
-  @OneToMany(() => World, (world) => world.users_id)
+  @OneToMany(() => World, (world) => world.user_id)
   worldsOwn: World[]
 
   @ManyToMany(() => World)
   worldsPlaying: World[]
 
-  @OneToMany(() => Character, (character) => character.users_id)
+  @OneToMany(() => Character, (character) => character.user_id)
   characters: Character[]
 }
 

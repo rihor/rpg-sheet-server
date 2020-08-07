@@ -3,10 +3,10 @@ import { injectable, inject } from "tsyringe"
 
 import authConfig from "@configs/auth"
 import UsersRepositoryInterface from "@modules/users/repositories/UsersRepositoryInterface"
+import HashProviderInterface from "@shared/container/providers/HashProvider/HashProviderInterface"
 import AppError from "@shared/errors/AppError"
 
 import User from "../infra/typeorm/entities/User"
-import HashProviderInterface from "../providers/HashProvider/HashProviderInterface"
 
 interface Request {
   email: string

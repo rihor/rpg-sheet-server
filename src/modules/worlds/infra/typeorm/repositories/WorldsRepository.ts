@@ -5,7 +5,7 @@ import WorldsRepositoryInterface from "@modules/worlds/repositories/WorldsReposi
 
 import World from "../entities/World"
 
-class UsersRepository implements WorldsRepositoryInterface {
+class WorldsRepository implements WorldsRepositoryInterface {
   private ormRepository: Repository<World>
 
   constructor() {
@@ -41,4 +41,4 @@ class UsersRepository implements WorldsRepositoryInterface {
   }
 }
 
-export default UsersRepository
+export default WorldsRepository

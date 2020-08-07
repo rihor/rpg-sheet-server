@@ -1,6 +1,6 @@
+import FakeHashProvider from "@shared/container/providers/HashProvider/FakeHashProvider"
 import AppError from "@shared/errors/AppError"
 
-import FakeHashProvider from "../providers/HashProvider/FakeHashProvider"
 import FakeUsersRepository from "../repositories/FakeUsersRepository"
 import UpdateProfileService from "./UpdateProfileService"
 

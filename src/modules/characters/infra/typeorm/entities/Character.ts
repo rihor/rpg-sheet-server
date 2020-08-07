@@ -12,19 +12,19 @@ class Character extends Base {
   @Column({ nullable: true, type: "text" })
   description?: string
 
+  @Column("uuid")
+  user_id: string
+
+  @Column("uuid")
+  world_id: string
+
   @ManyToOne(() => User)
-  @JoinColumn({ name: "users_id" })
+  @JoinColumn({ name: "user_id" })
   owner: User
 
   @ManyToOne(() => World)
-  @JoinColumn({ name: "worlds_id" })
+  @JoinColumn({ name: "world_id" })
   world: World
-
-  @Column()
-  users_id: string
-
-  @Column()
-  worlds_id: string
 }
 
 export default Character

@@ -1,9 +1,9 @@
 import { inject, injectable } from "tsyringe"
 
+import HashProviderInterface from "@shared/container/providers/HashProvider/HashProviderInterface"
 import AppError from "@shared/errors/AppError"
 
 import User from "../infra/typeorm/entities/User"
-import HashProviderInterface from "../providers/HashProvider/HashProviderInterface"
 import UsersRepositoryInterface from "../repositories/UsersRepositoryInterface"
 
 interface Request {

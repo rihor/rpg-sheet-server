@@ -5,7 +5,7 @@ import WorldsRepositoryInterface from "@modules/worlds/repositories/WorldsReposi
 
 import World from "../infra/typeorm/entities/World"
 
-class UsersRepository implements WorldsRepositoryInterface {
+class FakeWorldsRepository implements WorldsRepositoryInterface {
   private worlds: World[] = []
 
   public async findById(id: string): Promise<World | undefined> {
@@ -47,4 +47,4 @@ class UsersRepository implements WorldsRepositoryInterface {
   }
 }
 
-export default UsersRepository
+export default FakeWorldsRepository
