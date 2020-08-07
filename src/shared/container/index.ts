@@ -1,12 +1,14 @@
 import { container } from "tsyringe"
 
-import "@modules/users/providers"
+import "./providers"
 
 import CharactersRepository from "@modules/characters/infra/typeorm/repositories/CharactersRepository"
 import CharactersRepositoryInterface from "@modules/characters/repositories/CharactersRepositoryInterface"
 import UsersRepository from "@modules/users/infra/typeorm/repositories/UsersRepository"
 import UsersRepositoryInterface from "@modules/users/repositories/UsersRepositoryInterface"
+import WorldPlayersRepository from "@modules/worlds/infra/typeorm/repositories/WorldPlayersRepository"
 import WorldsRepository from "@modules/worlds/infra/typeorm/repositories/WorldsRepository"
+import WorldPlayersRepositoryInterface from "@modules/worlds/repositories/WorldPlayersRepositoryInterface"
 import WorldsRepositoryInterface from "@modules/worlds/repositories/WorldsRepositoryInterface"
 
 container.registerSingleton<UsersRepositoryInterface>(
@@ -17,6 +19,11 @@ container.registerSingleton<UsersRepositoryInterface>(
 container.registerSingleton<WorldsRepositoryInterface>(
   "WorldsRepository",
   WorldsRepository
+)
+
+container.registerSingleton<WorldPlayersRepositoryInterface>(
+  "WorldPlayersRepository",
+  WorldPlayersRepository
 )
 
 container.registerSingleton<CharactersRepositoryInterface>(
