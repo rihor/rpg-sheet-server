@@ -1,4 +1,5 @@
 import FakeUsersRepository from "@modules/users/repositories/FakeUsersRepository"
+import FakeHashProvider from "@shared/container/providers/HashProvider/FakeHashProvider"
 import AppError from "@shared/errors/AppError"
 
 import FakeWorldsRepository from "../repositories/FakeWorldsRepository"
@@ -6,16 +7,19 @@ import CreateWorldService from "./CreateWorldService"
 
 let fakeWorldsRepository: FakeWorldsRepository
 let fakeUsersRepository: FakeUsersRepository
+let fakeHashProvider: FakeHashProvider
 let createWorld: CreateWorldService
 
 describe("CreateWorld", () => {
   beforeEach(() => {
     fakeWorldsRepository = new FakeWorldsRepository()
     fakeUsersRepository = new FakeUsersRepository()
+    fakeHashProvider = new FakeHashProvider()
 
     createWorld = new CreateWorldService(
       fakeWorldsRepository,
-      fakeUsersRepository
+      fakeUsersRepository,
+      fakeHashProvider
     )
   })
 

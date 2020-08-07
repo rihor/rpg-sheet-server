@@ -1,6 +1,7 @@
 import { inject, injectable } from "tsyringe"
 
 import UsersRepositoryInterface from "@modules/users/repositories/UsersRepositoryInterface"
+import HashProviderInterface from "@shared/container/providers/HashProvider/HashProviderInterface"
 import AppError from "@shared/errors/AppError"
 
 import World from "../infra/typeorm/entities/World"
@@ -21,7 +22,10 @@ class CreateUserService {
     private worldsRepository: WorldsRepositoryInterface,
 
     @inject("UsersRepository")
-    private usersRepository: UsersRepositoryInterface
+    private usersRepository: UsersRepositoryInterface,
+
+    @inject("HashProvider")
+    private hashProvider: HashProviderInterface
   ) {}
 
   public async execute({
@@ -37,12 +41,14 @@ class CreateUserService {
       throw new AppError("User not found.", 404)
     }
 
+    const hashedPassword = await this.hashProvider.generateHash(password)
+
     const world = await this.worldsRepository.create({
       title,
-      password,
+      password: hashedPassword,
       description,
-      users_id: user.id,
-      rules_id: ruleId,
+      userId: user.id,
+      ruleId: ruleId,
     })
 
     return world
