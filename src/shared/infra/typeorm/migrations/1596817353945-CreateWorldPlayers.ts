@@ -1,12 +1,12 @@
 import { MigrationInterface, QueryRunner, Table } from "typeorm"
 
-export class CreateWorldPlayers1596645037773 implements MigrationInterface {
-  name = "CreateWorldPlayers1596645037773"
+export class CreateWorldPlayers1596817353945 implements MigrationInterface {
+  name = "CreateWorldPlayers1596817353945"
 
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
-        name: "worlds_players",
+        name: "world_players",
         columns: [
           {
             name: "id",
@@ -16,11 +16,11 @@ export class CreateWorldPlayers1596645037773 implements MigrationInterface {
             default: "uuid_generate_v4()",
           },
           {
-            name: "worlds_id",
+            name: "player_id",
             type: "uuid",
           },
           {
-            name: "player_id",
+            name: "world_id",
             type: "uuid",
           },
           {
@@ -47,7 +47,7 @@ export class CreateWorldPlayers1596645037773 implements MigrationInterface {
             name: "PlayerWorld",
             referencedTableName: "worlds",
             referencedColumnNames: ["id"],
-            columnNames: ["worlds_id"],
+            columnNames: ["world_id"],
             onDelete: "CASCADE",
             onUpdate: "CASCADE",
           },
@@ -57,6 +57,6 @@ export class CreateWorldPlayers1596645037773 implements MigrationInterface {
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable("worlds_players")
+    await queryRunner.dropTable("world_players")
   }
 }

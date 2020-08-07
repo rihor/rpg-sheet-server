@@ -29,12 +29,12 @@ export class CreateWorld1596213290169 implements MigrationInterface {
             isNullable: true,
           },
           {
-            name: "users_id",
+            name: "user_id",
             type: "uuid",
             isNullable: true,
           },
           {
-            name: "rules_id",
+            name: "rule_id",
             type: "uuid",
           },
           {
@@ -53,7 +53,7 @@ export class CreateWorld1596213290169 implements MigrationInterface {
             name: "WorldOwner",
             referencedTableName: "users",
             referencedColumnNames: ["id"],
-            columnNames: ["users_id"],
+            columnNames: ["user_id"],
             onDelete: "SET NULL",
             onUpdate: "CASCADE",
           },
