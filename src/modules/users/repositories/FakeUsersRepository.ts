@@ -1,4 +1,4 @@
-import { uuid } from "uuidv4"
+import { v4 as uuid } from "uuid"
 
 import CreateUserDTO from "@modules/users/dtos/CreateUserDTO"
 import User from "@modules/users/infra/typeorm/entities/User"

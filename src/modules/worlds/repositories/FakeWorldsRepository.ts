@@ -1,4 +1,4 @@
-import { uuid } from "uuidv4"
+import { v4 as uuid } from "uuid"
 
 import CreateWorldDTO from "@modules/worlds/dtos/CreateWorldDTO"
 import WorldsRepositoryInterface from "@modules/worlds/repositories/WorldsRepositoryInterface"
