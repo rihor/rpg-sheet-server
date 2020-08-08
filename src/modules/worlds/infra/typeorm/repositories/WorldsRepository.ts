@@ -13,7 +13,9 @@ class WorldsRepository implements WorldsRepositoryInterface {
   }
 
   public async findById(id: string): Promise<World | undefined> {
-    const world = await this.ormRepository.findOne(id)
+    const world = await this.ormRepository.findOne(id, {
+      relations: ["owner"],
+    })
 
     return world
   }
@@ -23,6 +25,7 @@ class WorldsRepository implements WorldsRepositoryInterface {
       where: {
         title: Like(`%${title}%`),
       },
+      relations: ["owner"],
     })
 
     return worldsWithCount

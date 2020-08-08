@@ -1,3 +1,4 @@
+import { Exclude } from "class-transformer"
 import {
   Entity,
   Column,
@@ -17,6 +18,7 @@ class World extends Base {
   @Column()
   title: string
 
+  @Exclude()
   @Column()
   password: string
 

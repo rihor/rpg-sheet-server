@@ -2,7 +2,7 @@ import { classToClass } from "class-transformer"
 import { Request, Response } from "express"
 import { container } from "tsyringe"
 
-import AddPlayerToWorld from "@modules/worlds/services/AddPlayerToWorld"
+import AddPlayerToWorld from "@modules/worlds/services/AddPlayerToWorldService"
 
 export default class WorldPlayersController {
   public async create(request: Request, response: Response): Promise<Response> {

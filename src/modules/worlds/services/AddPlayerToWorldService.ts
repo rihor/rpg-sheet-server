@@ -15,7 +15,7 @@ interface Request {
 }
 
 @injectable()
-class CreateUserService {
+class AddPlayerToWorldService {
   constructor(
     @inject("WorldPlayersRepository")
     private worldPlayersRepository: WorldPlayersRepositoryInterface,
@@ -82,4 +82,4 @@ class CreateUserService {
   }
 }
 
-export default CreateUserService
+export default AddPlayerToWorldService

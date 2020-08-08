@@ -1,10 +1,10 @@
 import "reflect-metadata"
 import "dotenv/config"
-import httpApp from "./http/app"
-import startWebsocket from "./ws"
-
 import "@shared/infra/typeorm" // start database
 import "@shared/container" // start the dependency injection container
+
+import httpApp from "./http/app"
+import startWebsocket from "./ws"
 
 const { PORT, APP_API_URL } = process.env
 

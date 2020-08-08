@@ -15,6 +15,8 @@ const worldPlayersController = new WorldPlayersController()
 
 worldsRouter.use(ensureAuthenticated)
 
+worldsRouter.get("/:id", worldsController.show)
+
 worldsRouter.post("/", createWorldValidator, worldsController.create)
 
 worldsRouter.post(

@@ -4,7 +4,7 @@ import AppError from "@shared/errors/AppError"
 
 import FakeWorldPlayersRepository from "../repositories/FakeWorldPlayersRepository"
 import FakeWorldsRepository from "../repositories/FakeWorldsRepository"
-import AddPlayerToWorld from "./AddPlayerToWorld"
+import AddPlayerToWorld from "./AddPlayerToWorldService"
 
 let fakeWorldPlayersRepository: FakeWorldPlayersRepository
 let fakeWorldsRepository: FakeWorldsRepository

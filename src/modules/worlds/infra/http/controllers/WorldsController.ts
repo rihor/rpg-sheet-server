@@ -3,6 +3,7 @@ import { Request, Response } from "express"
 import { container } from "tsyringe"
 
 import CreateWorldService from "@modules/worlds/services/CreateWorldService"
+import ShowWorldService from "@modules/worlds/services/ShowWorldService"
 
 export default class WorldsController {
   public async create(request: Request, response: Response): Promise<Response> {
@@ -20,5 +21,17 @@ export default class WorldsController {
     })
 
     return response.status(201).json(classToClass(user))
+  }
+
+  public async show(request: Request, response: Response): Promise<Response> {
+    const worldId = request.params.id
+
+    const showWorld = container.resolve(ShowWorldService)
+
+    const world = await showWorld.execute({
+      worldId,
+    })
+
+    return response.status(200).json(classToClass(world))
   }
 }
