@@ -29,7 +29,7 @@ class WorldsRepository implements WorldsRepositoryInterface {
   }
 
   public async create(worldData: CreateWorldDTO): Promise<World> {
-    const world = await this.ormRepository.create(worldData)
+    const world = this.ormRepository.create(worldData)
 
     await this.ormRepository.save(world)
 

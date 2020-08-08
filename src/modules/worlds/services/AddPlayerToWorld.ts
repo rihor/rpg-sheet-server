@@ -60,6 +60,10 @@ class CreateUserService {
       return existentWorldPlayer
     }
 
+    if (world.user_id === player.id) {
+      throw new AppError("World owner cannot enter as a player.", 403)
+    }
+
     const doesPasswordMatch = await this.hashProvider.compareHash(
       password,
       world.password

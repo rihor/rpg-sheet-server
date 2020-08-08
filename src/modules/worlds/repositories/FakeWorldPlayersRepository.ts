@@ -26,10 +26,9 @@ class FakeWorldPlayersRepository implements WorldPlayersRepositoryInterface {
     playerId: string,
     worldId: string
   ): Promise<WorldPlayer | undefined> {
-    const worldPlayer = this.worldPlayers.find((wP) => {
-      console.info(wP)
-      return wP.player_id === playerId && wP.world_id === worldId
-    })
+    const worldPlayer = this.worldPlayers.find(
+      (wP) => wP.player_id === playerId && wP.world_id === worldId
+    )
 
     return worldPlayer
   }

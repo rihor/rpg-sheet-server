@@ -166,4 +166,28 @@ describe("AddPlayerToWorld", () => {
       })
     ).rejects.toBeInstanceOf(AppError)
   })
+
+  it("should not be able to add world owner as a player", async () => {
+    const worldOwner = await fakeUsersRepository.create({
+      name: "World Owner",
+      email: "world@owner.com",
+      password: "123456",
+    })
+
+    const world = await fakeWorldsRepository.create({
+      title: "World",
+      password: "world_pass",
+      rule_id: "rule_id",
+      user_id: worldOwner.id,
+      description: "Description",
+    })
+
+    await expect(
+      addPlayerToWorld.execute({
+        password: "world_pass",
+        playerId: worldOwner.id,
+        worldId: world.id,
+      })
+    ).rejects.toBeInstanceOf(AppError)
+  })
 })

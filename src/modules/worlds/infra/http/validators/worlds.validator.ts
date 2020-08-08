@@ -11,3 +11,13 @@ export const createWorldValidator = celebrate(
   },
   { abortEarly: false }
 )
+
+export const createWorldPlayerValidator = celebrate(
+  {
+    [Segments.BODY]: {
+      worldId: Joi.string().uuid().required(),
+      password: Joi.string().required(),
+    },
+  },
+  { abortEarly: false }
+)
