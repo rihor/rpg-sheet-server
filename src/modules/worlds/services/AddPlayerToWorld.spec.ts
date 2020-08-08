@@ -43,8 +43,8 @@ describe("AddPlayerToWorld", () => {
     const world = await fakeWorldsRepository.create({
       title: "World",
       password: "world_pass",
-      ruleId: "ruleId",
-      userId: worldOwner.id,
+      rule_id: "rule_id",
+      user_id: worldOwner.id,
       description: "Description",
     })
 
@@ -75,8 +75,8 @@ describe("AddPlayerToWorld", () => {
     const world = await fakeWorldsRepository.create({
       title: "World",
       password: "world_pass",
-      ruleId: "ruleId",
-      userId: worldOwner.id,
+      rule_id: "rule_id",
+      user_id: worldOwner.id,
       description: "Description",
     })
 
@@ -107,8 +107,8 @@ describe("AddPlayerToWorld", () => {
     const world = await fakeWorldsRepository.create({
       title: "World",
       password: "world_pass",
-      ruleId: "ruleId",
-      userId: worldOwner.id,
+      rule_id: "rule_id",
+      user_id: worldOwner.id,
       description: "Description",
     })
 
@@ -153,8 +153,8 @@ describe("AddPlayerToWorld", () => {
     const world = await fakeWorldsRepository.create({
       title: "World",
       password: "world_pass",
-      ruleId: "ruleId",
-      userId: worldOwner.id,
+      rule_id: "rule_id",
+      user_id: worldOwner.id,
       description: "Description",
     })
 

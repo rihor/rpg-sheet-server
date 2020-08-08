@@ -13,10 +13,7 @@ class WorldPlayersRepository implements WorldPlayersRepositoryInterface {
   }
 
   async create(data: AddPlayerToWorldDTO): Promise<WorldPlayer> {
-    const worldPlayer = await this.ormRepository.create({
-      world_id: data.worldId,
-      player_id: data.playerId,
-    })
+    const worldPlayer = await this.ormRepository.create(data)
 
     return worldPlayer
   }

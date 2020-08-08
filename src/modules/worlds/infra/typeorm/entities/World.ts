@@ -30,11 +30,11 @@ class World extends Base {
   rule_id: string
 
   @ManyToMany(() => User)
-  @JoinTable({ name: "worlds_players" })
+  @JoinTable({ name: "world_players" })
   players: User[]
 
   @ManyToOne(() => User)
-  @JoinColumn({ name: "users_id" })
+  @JoinColumn({ name: "user_id" })
   owner: User
 
   @OneToMany(() => Character, (character) => character.world_id)

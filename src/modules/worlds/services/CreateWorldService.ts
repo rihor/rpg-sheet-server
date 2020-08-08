@@ -47,8 +47,8 @@ class CreateUserService {
       title,
       password: hashedPassword,
       description,
-      userId: user.id,
-      ruleId: ruleId,
+      user_id: user.id,
+      rule_id: ruleId,
     })
 
     return world

@@ -1,4 +1,4 @@
 export default interface AddPlayerToWorldDTO {
-  playerId: string
-  worldId: string
+  player_id: string
+  world_id: string
 }

@@ -13,8 +13,8 @@ class FakeWorldPlayersRepository implements WorldPlayersRepositoryInterface {
 
     Object.assign(worldPlayer, {
       id: uuid(),
-      world_id: data.worldId,
-      player_id: data.playerId,
+      world_id: data.world_id,
+      player_id: data.player_id,
     })
 
     this.worldPlayers.push(worldPlayer)

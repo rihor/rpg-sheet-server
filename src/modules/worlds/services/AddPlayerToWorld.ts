@@ -70,8 +70,8 @@ class CreateUserService {
     }
 
     const worldPlayer = await this.worldPlayersRepository.create({
-      worldId: world.id,
-      playerId: player.id,
+      world_id: world.id,
+      player_id: player.id,
     })
 
     return worldPlayer

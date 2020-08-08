@@ -38,8 +38,8 @@ class CreateCharacterService {
     const character = await this.charactersRepository.create({
       name,
       description,
-      ownerId,
-      worldId,
+      user_id: ownerId,
+      world_id: worldId,
     })
 
     return character
