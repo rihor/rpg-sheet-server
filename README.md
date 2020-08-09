@@ -12,4 +12,4 @@
 
 ## Characters
 
-- [ ] User should be able to create a Character
+- [x] User should be able to create a Character

@@ -6,14 +6,15 @@ import CreateCharacterService from "@modules/characters/services/CreateCharacter
 
 export default class CharactersController {
   public async create(request: Request, response: Response): Promise<Response> {
-    const { name, description, worldId, ownerId } = request.body
+    const { name, description, worldId } = request.body
+    const userId = request.user.id
 
     const createCharacter = container.resolve(CreateCharacterService)
 
     const character = await createCharacter.execute({
       name,
       description,
-      ownerId: ownerId,
+      ownerId: userId,
       worldId: worldId,
     })
 

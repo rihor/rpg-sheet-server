@@ -1,6 +1,7 @@
 import { inject, injectable } from "tsyringe"
 
 import UsersRepositoryInterface from "@modules/users/repositories/UsersRepositoryInterface"
+import WorldsRepositoryInterface from "@modules/worlds/repositories/WorldsRepositoryInterface"
 import AppError from "@shared/errors/AppError"
 
 import Character from "../infra/typeorm/entities/Character"
@@ -20,7 +21,10 @@ class CreateCharacterService {
     private charactersRepository: CharactersRepositoryInterface,
 
     @inject("UsersRepository")
-    private usersRepository: UsersRepositoryInterface
+    private usersRepository: UsersRepositoryInterface,
+
+    @inject("WorldsRepository")
+    private worldsRepository: WorldsRepositoryInterface
   ) {}
 
   public async execute({
@@ -29,10 +33,17 @@ class CreateCharacterService {
     ownerId,
     worldId,
   }: Request): Promise<Character> {
-    const user = await this.usersRepository.findById(ownerId)
+    const userPromise = this.usersRepository.findById(ownerId)
+    const worldPromise = this.worldsRepository.findById(worldId)
+
+    const [user, world] = await Promise.all([userPromise, worldPromise])
 
     if (!user) {
-      throw new AppError("Character owner not found.", 404)
+      throw new AppError("User not found.", 404)
+    }
+
+    if (!world) {
+      throw new AppError("World not found.", 404)
     }
 
     const character = await this.charactersRepository.create({
