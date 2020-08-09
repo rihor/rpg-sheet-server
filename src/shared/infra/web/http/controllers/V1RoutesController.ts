@@ -2,19 +2,22 @@ import { Request, Response } from "express"
 
 export default class V1RoutesController {
   public async index(request: Request, response: Response): Promise<Response> {
+    const prefix = "http://localhost:3333/api/v1"
+
     return response.status(200).json({
-      user: {
-        POST: "http://localhost:3333/api/v1/users",
-        session: {
-          POST: "http://localhost:3333/api/v1/sessions",
-        },
-        profile: {
-          GET: "http://localhost:3333/api/v1/profile",
-          PUT: "http://localhost:3333/api/v1/profile",
-        },
+      POST: {
+        "create-user": `${prefix}/users`,
+        "create-session": `${prefix}/sessions`,
+        "create-world": `${prefix}/worlds`,
+        "enter-world": `${prefix}/worlds/enter`,
+        "create-character": `${prefix}/characters`,
       },
-      world: {
-        POST: "http://localhost:3333/api/v1/worlds",
+      GET: {
+        "show-profile": `${prefix}/profile`,
+        "show-world": `${prefix}/worlds/:id`,
+      },
+      PUT: {
+        "update-profile": `${prefix}/profile`,
       },
     })
   }

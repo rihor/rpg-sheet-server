@@ -6,7 +6,12 @@ import sessionsRouter from "@modules/users/infra/http/routes/sessions.routes"
 import usersRouter from "@modules/users/infra/http/routes/users.routes"
 import worldsRouter from "@modules/worlds/infra/http/routes/worlds.routes"
 
+import V1RoutesController from "../controllers/V1RoutesController"
+
 const routes = Router()
+const v1Routes = new V1RoutesController()
+
+routes.get("/", v1Routes.index)
 
 routes.use("/users", usersRouter)
 routes.use("/sessions", sessionsRouter)
