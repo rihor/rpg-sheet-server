@@ -14,8 +14,10 @@ class WorldsRepository implements WorldsRepositoryInterface {
 
   public async findById(id: string): Promise<World | undefined> {
     const world = await this.ormRepository.findOne(id, {
-      relations: ["owner"],
+      relations: ["owner", "players", "characters"],
     })
+
+    console.info(world)
 
     return world
   }

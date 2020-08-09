@@ -13,7 +13,7 @@ import Character from "@modules/characters/infra/typeorm/entities/Character"
 import User from "@modules/users/infra/typeorm/entities/User"
 import Base from "@shared/infra/typeorm/entities/Base"
 
-@Entity("worlds")
+@Entity("worlds", {})
 class World extends Base {
   @Column()
   title: string
@@ -32,14 +32,18 @@ class World extends Base {
   rule_id: string
 
   @ManyToMany(() => User)
-  @JoinTable({ name: "world_players" })
+  @JoinTable({
+    name: "world_players",
+    joinColumn: { name: "world_id" },
+    inverseJoinColumn: { name: "player_id" },
+  })
   players: User[]
 
   @ManyToOne(() => User)
   @JoinColumn({ name: "user_id" })
   owner: User
 
-  @OneToMany(() => Character, (character) => character.world_id)
+  @OneToMany(() => Character, (character) => character.world)
   characters: Character[]
 }
 

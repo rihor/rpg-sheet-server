@@ -22,7 +22,7 @@ class Character extends Base {
   @JoinColumn({ name: "user_id" })
   owner: User
 
-  @ManyToOne(() => World)
+  @ManyToOne(() => World, (world) => world.characters)
   @JoinColumn({ name: "world_id" })
   world: World
 }
