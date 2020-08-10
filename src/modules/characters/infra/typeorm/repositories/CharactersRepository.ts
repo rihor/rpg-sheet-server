@@ -5,7 +5,7 @@ import CharactersRepositoryInterface from "@modules/characters/repositories/Char
 
 import Character from "../entities/Character"
 
-class UsersRepository implements CharactersRepositoryInterface {
+class CharactersRepository implements CharactersRepositoryInterface {
   private ormRepository: Repository<Character>
 
   constructor() {
@@ -20,9 +20,9 @@ class UsersRepository implements CharactersRepositoryInterface {
     return character
   }
 
-  public async save(user: Character): Promise<Character> {
-    return this.ormRepository.save(user)
+  public async save(character: Character): Promise<Character> {
+    return this.ormRepository.save(character)
   }
 }
 
-export default UsersRepository
+export default CharactersRepository
