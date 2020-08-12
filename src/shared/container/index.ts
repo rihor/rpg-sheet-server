@@ -4,6 +4,8 @@ import "./providers"
 
 import CharactersRepository from "@modules/characters/infra/typeorm/repositories/CharactersRepository"
 import CharactersRepositoryInterface from "@modules/characters/repositories/CharactersRepositoryInterface"
+import SystemBaseRepository from "@modules/system/infra/typeorm/repositories/SystemBaseRepository"
+import SystemBaseRepositoryInterface from "@modules/system/repositories/SystemBaseRepositoryInterface"
 import UsersRepository from "@modules/users/infra/typeorm/repositories/UsersRepository"
 import UsersRepositoryInterface from "@modules/users/repositories/UsersRepositoryInterface"
 import WorldPlayersRepository from "@modules/worlds/infra/typeorm/repositories/WorldPlayersRepository"
@@ -29,4 +31,9 @@ container.registerSingleton<WorldPlayersRepositoryInterface>(
 container.registerSingleton<CharactersRepositoryInterface>(
   "CharactersRepository",
   CharactersRepository
+)
+
+container.registerSingleton<SystemBaseRepositoryInterface>(
+  "SystemBaseRepository",
+  SystemBaseRepository
 )

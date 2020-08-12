@@ -13,3 +13,9 @@
 ## Characters
 
 - [x] User should be able to create a Character
+- [ ] Should have a Stats associated
+- [ ] Should be able to change status
+
+## System
+
+- [x] Should be able to create a SystemBase

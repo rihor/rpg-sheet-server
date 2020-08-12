@@ -28,7 +28,7 @@ class World extends Base {
   @Column("uuid")
   user_id: string
 
-  @Column("uuid")
+  @Column()
   rule_id: string
 
   @ManyToMany(() => User)

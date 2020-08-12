@@ -7,12 +7,10 @@ import {
   Entity,
 } from "typeorm"
 
-export interface Stats {
-  [key: string]: string | number
-}
+import Form from "./Form"
 
-@Entity("rules")
-class Rule {
+@Entity("system_bases")
+class SystemBase {
   @ObjectIdColumn()
   id: ObjectID
 
@@ -23,7 +21,7 @@ class Rule {
   description: string
 
   @Column()
-  stats: Stats
+  formBase: Form
 
   @CreateDateColumn()
   created_at: Date
@@ -32,4 +30,4 @@ class Rule {
   updated_at: Date
 }
 
-export default Rule
+export default SystemBase

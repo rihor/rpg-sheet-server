@@ -1,6 +1,7 @@
 import { Router } from "express"
 
 import charactersRouter from "@modules/characters/infra/http/routes/characters.routes"
+import systemBasesRouter from "@modules/system/infra/http/routes/systemBases.routes"
 import profileRouter from "@modules/users/infra/http/routes/profile.routes"
 import sessionsRouter from "@modules/users/infra/http/routes/sessions.routes"
 import usersRouter from "@modules/users/infra/http/routes/users.routes"
@@ -19,5 +20,7 @@ routes.use("/profile", profileRouter)
 
 routes.use("/characters", charactersRouter)
 routes.use("/worlds", worldsRouter)
+
+routes.use("/system-base", systemBasesRouter)
 
 export default routes
