@@ -6,7 +6,7 @@ export const createWorldValidator = celebrate(
       title: Joi.string().min(2).required(),
       password: Joi.string().min(6).required(),
       description: Joi.string().min(2),
-      ruleId: Joi.string().uuid().required(),
+      systemBaseId: Joi.string().uuid().required(),
     },
   },
   { abortEarly: false }

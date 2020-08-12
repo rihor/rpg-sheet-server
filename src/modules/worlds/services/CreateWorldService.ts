@@ -12,7 +12,7 @@ interface Request {
   description?: string
   password: string
   ownerId: string
-  ruleId: string
+  systemBaseId: string
 }
 
 @injectable()
@@ -33,7 +33,7 @@ class CreateWorldService {
     description,
     password,
     ownerId,
-    ruleId,
+    systemBaseId,
   }: Request): Promise<World> {
     const user = await this.usersRepository.findById(ownerId)
 
@@ -48,7 +48,7 @@ class CreateWorldService {
       password: hashedPassword,
       description,
       user_id: user.id,
-      rule_id: ruleId,
+      system_base_id: systemBaseId,
     })
 
     return world

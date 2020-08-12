@@ -13,7 +13,7 @@ import Character from "@modules/characters/infra/typeorm/entities/Character"
 import User from "@modules/users/infra/typeorm/entities/User"
 import Base from "@shared/infra/typeorm/entities/Base"
 
-@Entity("worlds", {})
+@Entity("worlds")
 class World extends Base {
   @Column()
   title: string
@@ -29,7 +29,7 @@ class World extends Base {
   user_id: string
 
   @Column()
-  rule_id: string
+  system_base_id: string
 
   @ManyToMany(() => User)
   @JoinTable({

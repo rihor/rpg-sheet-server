@@ -34,7 +34,7 @@ export class CreateWorld1596213290169 implements MigrationInterface {
             isNullable: true,
           },
           {
-            name: "rule_id",
+            name: "system_base_id",
             type: "uuid",
           },
           {

@@ -35,7 +35,7 @@ describe("CreateWorld", () => {
       password: "password",
       description: "About the world",
       ownerId: user.id,
-      ruleId: "b6026c91-345b-4fb1-b529-7566bbc0579d",
+      systemBaseId: "b6026c91-345b-4fb1-b529-7566bbc0579d",
     })
 
     expect(world).toHaveProperty("id")
@@ -48,7 +48,7 @@ describe("CreateWorld", () => {
         password: "password",
         description: "About the world",
         ownerId: "non-existing_id",
-        ruleId: "b6026c91-345b-4fb1-b529-7566bbc0579d",
+        systemBaseId: "b6026c91-345b-4fb1-b529-7566bbc0579d",
       })
     ).rejects.toBeInstanceOf(AppError)
   })

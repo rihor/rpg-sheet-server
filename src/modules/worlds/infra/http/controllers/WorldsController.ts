@@ -7,7 +7,7 @@ import ShowWorldService from "@modules/worlds/services/ShowWorldService"
 
 export default class WorldsController {
   public async create(request: Request, response: Response): Promise<Response> {
-    const { title, password, description, ruleId } = request.body
+    const { title, password, description, systemBaseId } = request.body
     const userId = request.user.id
 
     const createUser = container.resolve(CreateWorldService)
@@ -17,7 +17,7 @@ export default class WorldsController {
       password,
       description,
       ownerId: userId,
-      ruleId,
+      systemBaseId,
     })
 
     return response.status(201).json(classToClass(user))

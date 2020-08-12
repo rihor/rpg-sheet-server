@@ -17,7 +17,7 @@ describe("ShowWorld", () => {
     const world = await fakeWorldsRepository.create({
       user_id: "fake-user-id",
       password: "world_password",
-      rule_id: "fake-rule-id",
+      system_base_id: "fake-rule-id",
       title: "World Test",
     })
 

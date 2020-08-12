@@ -3,5 +3,5 @@ export default interface CreateWorldDTO {
   password: string
   description?: string
   user_id: string
-  rule_id: string
+  system_base_id: string
 }
