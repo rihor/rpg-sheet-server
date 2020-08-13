@@ -1,4 +1,4 @@
-import { getMongoRepository, MongoRepository } from "typeorm"
+import { getMongoRepository, MongoRepository, ObjectID } from "typeorm"
 
 import CreateSystemBaseDTO from "@modules/system/dtos/CreateSystemBaseDTO"
 import SystemBaseRepositoryInterface from "@modules/system/repositories/SystemBaseRepositoryInterface"
@@ -16,6 +16,12 @@ class SystemBaseRepository implements SystemBaseRepositoryInterface {
     const systemBase = this.ormRepository.create(data)
 
     await this.ormRepository.save(systemBase)
+
+    return systemBase
+  }
+
+  async findById(id: ObjectID): Promise<SystemBase | undefined> {
+    const systemBase = await this.ormRepository.findOne(id)
 
     return systemBase
   }

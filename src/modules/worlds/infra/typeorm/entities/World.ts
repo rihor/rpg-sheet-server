@@ -7,6 +7,7 @@ import {
   OneToMany,
   ManyToMany,
   JoinTable,
+  ObjectID,
 } from "typeorm"
 
 import Character from "@modules/characters/infra/typeorm/entities/Character"
@@ -28,8 +29,8 @@ class World extends Base {
   @Column("uuid")
   user_id: string
 
-  @Column()
-  system_base_id: string
+  @Column("varchar")
+  system_base_id: ObjectID
 
   @ManyToMany(() => User)
   @JoinTable({

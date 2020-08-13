@@ -35,6 +35,10 @@ export class CreateCharacter1596214219232 implements MigrationInterface {
             isNullable: true,
           },
           {
+            name: "sheet_id",
+            type: "varchar",
+          },
+          {
             name: "created_at",
             type: "timestamp",
             default: "now()",

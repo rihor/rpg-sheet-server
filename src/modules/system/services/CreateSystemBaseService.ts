@@ -13,7 +13,7 @@ interface Request {
 @injectable()
 class CreateSystemBaseService {
   constructor(
-    @inject("SystemBaseRepository")
+    @inject("SystemBasesRepository")
     private systemBaseRepository: SystemBaseRepositoryInterface
   ) {}
 

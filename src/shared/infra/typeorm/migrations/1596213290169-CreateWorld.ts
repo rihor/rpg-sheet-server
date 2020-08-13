@@ -35,7 +35,7 @@ export class CreateWorld1596213290169 implements MigrationInterface {
           },
           {
             name: "system_base_id",
-            type: "uuid",
+            type: "varchar",
           },
           {
             name: "created_at",

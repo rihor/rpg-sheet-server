@@ -5,9 +5,6 @@ class Form {
   stats: string[]
 
   @Column({ type: "array", default: [] })
-  skills: string[]
-
-  @Column({ type: "array", default: [] })
   currencies: string[]
 
   @Column({ type: "boolean", default: true })
@@ -42,9 +39,6 @@ class Form {
 
   @Column({ type: "boolean", default: true })
   hasArmor: boolean
-
-  @Column({ type: "boolean", default: true })
-  hasMultipleLanguages: boolean
 
   @Column({ type: "boolean", default: true })
   hasSavingThrows: boolean

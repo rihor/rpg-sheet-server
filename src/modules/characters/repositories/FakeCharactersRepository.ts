@@ -5,7 +5,7 @@ import CharactersRepositoryInterface from "@modules/characters/repositories/Char
 
 import Character from "../infra/typeorm/entities/Character"
 
-class UsersRepository implements CharactersRepositoryInterface {
+class FakeCharactersRepository implements CharactersRepositoryInterface {
   private characters: Character[] = []
 
   public async create(characterData: CreateCharacterDTO): Promise<Character> {
@@ -29,4 +29,4 @@ class UsersRepository implements CharactersRepositoryInterface {
   }
 }
 
-export default UsersRepository
+export default FakeCharactersRepository

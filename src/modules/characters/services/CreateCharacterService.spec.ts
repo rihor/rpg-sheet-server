@@ -1,5 +1,6 @@
 import { v4 as uuid } from "uuid"
 
+import FakeSystemBasesRepository from "@modules/system/repositories/FakeSystemBaseRepository"
 import FakeUsersRepository from "@modules/users/repositories/FakeUsersRepository"
 import FakeWorldsRepository from "@modules/worlds/repositories/FakeWorldsRepository"
 import AppError from "@shared/errors/AppError"
@@ -10,18 +11,40 @@ import CreateCharacterService from "./CreateCharacterService"
 let fakeCharactersRepository: FakeCharactersRepository
 let fakeUsersRepository: FakeUsersRepository
 let fakeWorldsRepository: FakeWorldsRepository
+let fakeSystemBasesRepository: FakeSystemBasesRepository
 let createCharacter: CreateCharacterService
+
+const formBase = {
+  currencies: ["gold", "silver"],
+  skills: ["swim", "fight"],
+  stats: ["strength", "dexterity"],
+  hasAllignment: false,
+  hasArmor: false,
+  hasBackground: false,
+  hasClass: false,
+  hasExp: false,
+  hasInitiative: false,
+  hasLevel: false,
+  hasMana: false,
+  hasMultipleLanguages: false,
+  hasPerception: false,
+  hasRace: false,
+  hasSavingThrows: false,
+  hasSpeed: false,
+}
 
 describe("CreateUser", () => {
   beforeEach(() => {
     fakeCharactersRepository = new FakeCharactersRepository()
     fakeUsersRepository = new FakeUsersRepository()
     fakeWorldsRepository = new FakeWorldsRepository()
+    fakeSystemBasesRepository = new FakeSystemBasesRepository()
 
     createCharacter = new CreateCharacterService(
       fakeCharactersRepository,
       fakeUsersRepository,
-      fakeWorldsRepository
+      fakeWorldsRepository,
+      fakeSystemBasesRepository
     )
   })
 
@@ -32,10 +55,16 @@ describe("CreateUser", () => {
       password: "123456",
     })
 
+    const systemBase = await fakeSystemBasesRepository.create({
+      title: "System Base",
+      description: "description",
+      formBase,
+    })
+
     const world = await fakeWorldsRepository.create({
       password: "world_pass",
       title: "World",
-      rule_id: uuid(),
+      system_base_id: systemBase.id,
       user_id: user.id,
     })
 
@@ -55,10 +84,16 @@ describe("CreateUser", () => {
       password: "123456",
     })
 
+    const systemBase = await fakeSystemBasesRepository.create({
+      title: "FAKE SYSTEM BASE",
+      description: "description",
+      formBase,
+    })
+
     const world = await fakeWorldsRepository.create({
       password: "world_pass",
       title: "World",
-      rule_id: uuid(),
+      system_base_id: systemBase.id,
       user_id: worldOwner.id,
     })
 

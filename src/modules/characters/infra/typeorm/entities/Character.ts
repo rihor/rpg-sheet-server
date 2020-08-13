@@ -1,4 +1,4 @@
-import { Entity, Column, JoinColumn, ManyToOne } from "typeorm"
+import { Entity, Column, JoinColumn, ManyToOne, ObjectID } from "typeorm"
 
 import User from "@modules/users/infra/typeorm/entities/User"
 import World from "@modules/worlds/infra/typeorm/entities/World"
@@ -17,6 +17,9 @@ class Character extends Base {
 
   @Column("uuid")
   world_id: string
+
+  @Column("uuid")
+  sheet_id: ObjectID
 
   @ManyToOne(() => User)
   @JoinColumn({ name: "user_id" })

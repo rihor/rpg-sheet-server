@@ -5,7 +5,7 @@ import SystemBaseRepositoryInterface from "@modules/system/repositories/SystemBa
 
 import SystemBase from "../infra/typeorm/schemas/SystemBase"
 
-class SystemBaseRepository implements SystemBaseRepositoryInterface {
+class FakeSystemBaseRepository implements SystemBaseRepositoryInterface {
   private systemBases: SystemBase[] = []
 
   async create(data: CreateSystemBaseDTO): Promise<SystemBase> {
@@ -17,6 +17,12 @@ class SystemBaseRepository implements SystemBaseRepositoryInterface {
 
     return systemBase
   }
+
+  async findById(id: ObjectID): Promise<SystemBase | undefined> {
+    const systemBase = this.systemBases.find((sB) => sB.id === id)
+
+    return systemBase
+  }
 }
 
-export default SystemBaseRepository
+export default FakeSystemBaseRepository

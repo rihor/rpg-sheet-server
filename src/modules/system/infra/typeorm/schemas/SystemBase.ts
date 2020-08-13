@@ -5,11 +5,13 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   Entity,
+  Index,
 } from "typeorm"
 
 import Form from "./Form"
 
 @Entity("system_bases")
+@Index(["title"], { unique: true })
 class SystemBase {
   @ObjectIdColumn()
   id: ObjectID

@@ -2,7 +2,9 @@ import { container } from "tsyringe"
 
 import "./providers"
 
+import CharacterSheetsRepository from "@modules/characters/infra/typeorm/repositories/CharacterSheetsRepository"
 import CharactersRepository from "@modules/characters/infra/typeorm/repositories/CharactersRepository"
+import CharacterSheetsRepositoryInterface from "@modules/characters/repositories/CharacterSheetsRepositoryInterface"
 import CharactersRepositoryInterface from "@modules/characters/repositories/CharactersRepositoryInterface"
 import SystemBaseRepository from "@modules/system/infra/typeorm/repositories/SystemBaseRepository"
 import SystemBaseRepositoryInterface from "@modules/system/repositories/SystemBaseRepositoryInterface"
@@ -34,6 +36,11 @@ container.registerSingleton<CharactersRepositoryInterface>(
 )
 
 container.registerSingleton<SystemBaseRepositoryInterface>(
-  "SystemBaseRepository",
+  "SystemBasesRepository",
   SystemBaseRepository
+)
+
+container.registerSingleton<CharacterSheetsRepositoryInterface>(
+  "CharacterSheetsRepository",
+  CharacterSheetsRepository
 )

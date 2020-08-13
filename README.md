@@ -13,7 +13,7 @@
 ## Characters
 
 - [x] User should be able to create a Character
-- [ ] Should have a Stats associated
+- [x] Should have a CharacterSheet associated
 - [ ] Should be able to change status
 
 ## System

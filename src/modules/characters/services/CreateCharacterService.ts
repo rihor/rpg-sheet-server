@@ -1,5 +1,7 @@
 import { inject, injectable } from "tsyringe"
 
+import CharacterSheetsRepositoryInterface from "@modules/characters/repositories/CharacterSheetsRepositoryInterface"
+import SystemBaseRepositoryInterface from "@modules/system/repositories/SystemBaseRepositoryInterface"
 import UsersRepositoryInterface from "@modules/users/repositories/UsersRepositoryInterface"
 import WorldsRepositoryInterface from "@modules/worlds/repositories/WorldsRepositoryInterface"
 import AppError from "@shared/errors/AppError"
@@ -24,7 +26,13 @@ class CreateCharacterService {
     private usersRepository: UsersRepositoryInterface,
 
     @inject("WorldsRepository")
-    private worldsRepository: WorldsRepositoryInterface
+    private worldsRepository: WorldsRepositoryInterface,
+
+    @inject("SystemBasesRepository")
+    private systemBaseRepository: SystemBaseRepositoryInterface,
+
+    @inject("CharacterSheetsRepository")
+    private characterSheetsRepository: CharacterSheetsRepositoryInterface
   ) {}
 
   public async execute({
@@ -46,11 +54,53 @@ class CreateCharacterService {
       throw new AppError("World not found.", 404)
     }
 
+    const systemBase = await this.systemBaseRepository.findById(
+      world.system_base_id
+    )
+
+    if (!systemBase) {
+      throw new AppError(
+        "No rpg system on this world. Try creating a character later.",
+        403
+      )
+    }
+
+    const systemForm = systemBase.formBase
+
+    const sheet = await this.characterSheetsRepository.create({
+      health: { current: 10, max: 10 },
+      mana: systemForm.hasMana ? { current: 10, max: 10 } : undefined,
+      stats: systemForm.stats.map((stat) => ({
+        title: stat,
+        value: 10,
+        modifier: 0,
+      })),
+      items: [],
+      currencies: systemForm.currencies.map((curr) => ({
+        title: curr,
+        amount: 0,
+      })),
+      skills: [],
+      languages: [],
+      spells: [],
+      allignment: systemForm.hasAllignment ? "neutral" : undefined,
+      race: systemForm.hasRace ? "human" : undefined,
+      exp: systemForm.hasExp ? 0 : undefined,
+      background: systemForm.hasBackground ? "" : undefined,
+      class: systemForm.hasClass ? "" : undefined,
+      level: systemForm.hasLevel ? "1" : undefined,
+      initiative: systemForm.hasInitiative ? "1" : undefined,
+      perception: systemForm.hasPerception ? "1" : undefined,
+      speed: systemForm.hasSpeed ? "1" : undefined,
+      savingThrow: systemForm ? "" : undefined,
+    })
+
     const character = await this.charactersRepository.create({
       name,
       description,
       user_id: ownerId,
       world_id: worldId,
+      sheet_id: sheet.id,
     })
 
     return character
