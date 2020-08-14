@@ -1,3 +1,5 @@
+import { ObjectID } from "mongodb"
+
 import AppError from "@shared/errors/AppError"
 
 import FakeWorldsRepository from "../repositories/FakeWorldsRepository"
@@ -17,7 +19,7 @@ describe("ShowWorld", () => {
     const world = await fakeWorldsRepository.create({
       user_id: "fake-user-id",
       password: "world_password",
-      system_base_id: "fake-rule-id",
+      system_base_id: new ObjectID(),
       title: "World Test",
     })
 

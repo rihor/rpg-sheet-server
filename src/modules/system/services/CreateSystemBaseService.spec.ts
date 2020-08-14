@@ -6,7 +6,6 @@ let createSystemBase: CreateSystemBaseService
 
 const formBase = {
   currencies: ["gold", "silver"],
-  skills: ["swim", "fight"],
   stats: ["strength", "dexterity"],
   hasAllignment: false,
   hasArmor: false,

@@ -1,10 +1,9 @@
-import { v4 as uuid } from "uuid"
-
 import FakeSystemBasesRepository from "@modules/system/repositories/FakeSystemBaseRepository"
 import FakeUsersRepository from "@modules/users/repositories/FakeUsersRepository"
 import FakeWorldsRepository from "@modules/worlds/repositories/FakeWorldsRepository"
 import AppError from "@shared/errors/AppError"
 
+import FakeCharacterSheetsRepository from "../repositories/FakeCharacterSheetsRepository"
 import FakeCharactersRepository from "../repositories/FakeCharactersRepository"
 import CreateCharacterService from "./CreateCharacterService"
 
@@ -12,11 +11,11 @@ let fakeCharactersRepository: FakeCharactersRepository
 let fakeUsersRepository: FakeUsersRepository
 let fakeWorldsRepository: FakeWorldsRepository
 let fakeSystemBasesRepository: FakeSystemBasesRepository
+let fakeCharacterSheetsRepository: FakeCharacterSheetsRepository
 let createCharacter: CreateCharacterService
 
 const formBase = {
   currencies: ["gold", "silver"],
-  skills: ["swim", "fight"],
   stats: ["strength", "dexterity"],
   hasAllignment: false,
   hasArmor: false,
@@ -33,18 +32,20 @@ const formBase = {
   hasSpeed: false,
 }
 
-describe("CreateUser", () => {
+describe("CreateCharacter", () => {
   beforeEach(() => {
     fakeCharactersRepository = new FakeCharactersRepository()
     fakeUsersRepository = new FakeUsersRepository()
     fakeWorldsRepository = new FakeWorldsRepository()
     fakeSystemBasesRepository = new FakeSystemBasesRepository()
+    fakeCharacterSheetsRepository = new FakeCharacterSheetsRepository()
 
     createCharacter = new CreateCharacterService(
       fakeCharactersRepository,
       fakeUsersRepository,
       fakeWorldsRepository,
-      fakeSystemBasesRepository
+      fakeSystemBasesRepository,
+      fakeCharacterSheetsRepository
     )
   })
 

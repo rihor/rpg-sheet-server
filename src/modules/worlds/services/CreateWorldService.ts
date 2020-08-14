@@ -1,3 +1,4 @@
+import { ObjectID } from "mongodb"
 import { inject, injectable } from "tsyringe"
 
 import UsersRepositoryInterface from "@modules/users/repositories/UsersRepositoryInterface"
@@ -12,7 +13,7 @@ interface Request {
   description?: string
   password: string
   ownerId: string
-  systemBaseId: string
+  systemBaseId: ObjectID
 }
 
 @injectable()

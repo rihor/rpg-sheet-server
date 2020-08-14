@@ -1,3 +1,5 @@
+import { ObjectID } from "mongodb"
+
 import FakeUsersRepository from "@modules/users/repositories/FakeUsersRepository"
 import FakeHashProvider from "@shared/container/providers/HashProvider/FakeHashProvider"
 import AppError from "@shared/errors/AppError"
@@ -35,7 +37,7 @@ describe("CreateWorld", () => {
       password: "password",
       description: "About the world",
       ownerId: user.id,
-      systemBaseId: "b6026c91-345b-4fb1-b529-7566bbc0579d",
+      systemBaseId: new ObjectID(),
     })
 
     expect(world).toHaveProperty("id")
@@ -48,7 +50,7 @@ describe("CreateWorld", () => {
         password: "password",
         description: "About the world",
         ownerId: "non-existing_id",
-        systemBaseId: "b6026c91-345b-4fb1-b529-7566bbc0579d",
+        systemBaseId: new ObjectID(),
       })
     ).rejects.toBeInstanceOf(AppError)
   })

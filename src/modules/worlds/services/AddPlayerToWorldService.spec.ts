@@ -1,3 +1,5 @@
+import { ObjectID } from "mongodb"
+
 import FakeUsersRepository from "@modules/users/repositories/FakeUsersRepository"
 import FakeHashProvider from "@shared/container/providers/HashProvider/FakeHashProvider"
 import AppError from "@shared/errors/AppError"
@@ -43,7 +45,7 @@ describe("AddPlayerToWorld", () => {
     const world = await fakeWorldsRepository.create({
       title: "World",
       password: "world_pass",
-      system_base_id: "system_base_id",
+      system_base_id: new ObjectID(),
       user_id: worldOwner.id,
       description: "Description",
     })
@@ -75,7 +77,7 @@ describe("AddPlayerToWorld", () => {
     const world = await fakeWorldsRepository.create({
       title: "World",
       password: "world_pass",
-      system_base_id: "system_base_id",
+      system_base_id: new ObjectID(),
       user_id: worldOwner.id,
       description: "Description",
     })
@@ -107,7 +109,7 @@ describe("AddPlayerToWorld", () => {
     const world = await fakeWorldsRepository.create({
       title: "World",
       password: "world_pass",
-      system_base_id: "system_base_id",
+      system_base_id: new ObjectID(),
       user_id: worldOwner.id,
       description: "Description",
     })
@@ -153,7 +155,7 @@ describe("AddPlayerToWorld", () => {
     const world = await fakeWorldsRepository.create({
       title: "World",
       password: "world_pass",
-      system_base_id: "system_base_id",
+      system_base_id: new ObjectID(),
       user_id: worldOwner.id,
       description: "Description",
     })
@@ -177,7 +179,7 @@ describe("AddPlayerToWorld", () => {
     const world = await fakeWorldsRepository.create({
       title: "World",
       password: "world_pass",
-      system_base_id: "system_base_id",
+      system_base_id: new ObjectID(),
       user_id: worldOwner.id,
       description: "Description",
     })

@@ -24,7 +24,7 @@ interface Currencie {
   amount: number
 }
 
-export default interface CreateCharacterDTO {
+export default interface CreateCharacterSheetDTO {
   health: {
     current: number
     max: number
