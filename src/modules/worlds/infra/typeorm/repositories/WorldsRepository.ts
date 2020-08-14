@@ -17,8 +17,6 @@ class WorldsRepository implements WorldsRepositoryInterface {
       relations: ["owner", "players", "characters"],
     })
 
-    console.info(world)
-
     return world
   }
 

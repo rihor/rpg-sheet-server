@@ -12,8 +12,8 @@ class CharacterSheetsRepository implements CharacterSheetsRepositoryInterface {
     this.ormRepository = getMongoRepository(CharacterSheet, "mongo")
   }
 
-  public async create(): Promise<CharacterSheet> {
-    const characterSheet = await this.ormRepository.create({})
+  public async create(data: CreateCharacterSheetDTO): Promise<CharacterSheet> {
+    const characterSheet = this.ormRepository.create(data)
 
     await this.ormRepository.save(characterSheet)
 
