@@ -8,7 +8,7 @@
   "scripts": {
     "build": "tsc",
     "start": "ts-node src/shared/infra/web/index.ts",
-    "start:dev": "tsnd -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules src/shared/infra/web/index.ts",
+    "start:dev": "ts-node-dev -r tsconfig-paths/register --inspect --transpileOnly src/shared/infra/web/index.ts",
     "typeorm": "tsnd -r tsconfig-paths/register ./node_modules/typeorm/cli.js",
     "migration:run": "yarn typeorm migration:run",
     "migration:revert": "yarn typeorm migration:revert",
@@ -40,9 +40,9 @@
     "prettier": "^2.0.5",
     "ts-jest": "^26.1.4",
     "ts-node": "3.3.0",
-    "ts-node-dev": "^1.0.0-pre.56",
+    "ts-node-dev": "1.0.0-pre.44",
     "tsconfig-paths": "^3.9.0",
-    "typescript": "^3.9.7"
+    "typescript": "^3.8.3"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
