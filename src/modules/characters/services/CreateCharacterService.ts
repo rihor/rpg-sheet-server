@@ -54,6 +54,13 @@ class CreateCharacterService {
       throw new AppError("World not found.", 404)
     }
 
+    const isWorldPlayer = world.players.find((player) => player.id === user.id)
+    const isWorldOwner = world.owner.id === user.id
+
+    if (!isWorldPlayer && !isWorldOwner) {
+      throw new AppError("User is not part of this world.", 403)
+    }
+
     const systemBase = await this.systemBaseRepository.findById(
       world.system_base_id
     )

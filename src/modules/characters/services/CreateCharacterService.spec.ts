@@ -78,6 +78,41 @@ describe("CreateCharacter", () => {
     expect(character).toHaveProperty("id")
   })
 
+  it("should not allow character creation if not a player or a world owner", async () => {
+    const userOwner = await fakeUsersRepository.create({
+      name: "username",
+      email: "user@email.com",
+      password: "123456",
+    })
+
+    const user = await fakeUsersRepository.create({
+      name: "username",
+      email: "user@email.com",
+      password: "123456",
+    })
+
+    const systemBase = await fakeSystemBasesRepository.create({
+      title: "System Base",
+      description: "description",
+      formBase,
+    })
+
+    const world = await fakeWorldsRepository.create({
+      password: "world_pass",
+      title: "World",
+      system_base_id: systemBase.id,
+      user_id: userOwner.id,
+    })
+
+    await expect(
+      createCharacter.execute({
+        name: "NPC",
+        ownerId: user.id,
+        worldId: world.id,
+      })
+    ).rejects.toBeInstanceOf(AppError)
+  })
+
   it("should not be able to create a new character with a non-existing user", async () => {
     const worldOwner = await fakeUsersRepository.create({
       name: "username",

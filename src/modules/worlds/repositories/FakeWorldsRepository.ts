@@ -31,7 +31,11 @@ class FakeWorldsRepository implements WorldsRepositoryInterface {
   public async create(worldData: CreateWorldDTO): Promise<World> {
     const world = new World()
 
-    Object.assign(world, { id: uuid() }, worldData)
+    Object.assign(
+      world,
+      { id: uuid(), players: [], owner: { id: worldData.user_id } },
+      worldData
+    )
 
     this.worlds.push(world)
 
