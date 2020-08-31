@@ -1,7 +1,10 @@
 import { getRepository, Repository, Like } from "typeorm"
 
 import CreateWorldDTO from "@modules/worlds/dtos/CreateWorldDTO"
-import WorldsRepositoryInterface from "@modules/worlds/repositories/WorldsRepositoryInterface"
+import FindAllByTitleDTO from "@modules/worlds/dtos/FindAllByTitleDTO"
+import WorldsRepositoryInterface, {
+  findAllByTitleResponse,
+} from "@modules/worlds/repositories/WorldsRepositoryInterface"
 
 import World from "../entities/World"
 
@@ -20,15 +23,21 @@ class WorldsRepository implements WorldsRepositoryInterface {
     return world
   }
 
-  public async findByTitle(title: string): Promise<[World[], number]> {
+  public async findAllByTitle({
+    title,
+    page,
+    perPage,
+  }: FindAllByTitleDTO): Promise<findAllByTitleResponse> {
     const worldsWithCount = await this.ormRepository.findAndCount({
       where: {
         title: Like(`%${title}%`),
       },
+      take: perPage,
+      skip: perPage * (page - 1),
       relations: ["owner"],
     })
 
-    return worldsWithCount
+    return { worlds: worldsWithCount[0], count: worldsWithCount[1], page }
   }
 
   public async create(worldData: CreateWorldDTO): Promise<World> {

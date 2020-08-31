@@ -7,6 +7,7 @@ import WorldsController from "../controllers/WorldsController"
 import {
   createWorldValidator,
   createWorldPlayerValidator,
+  listWorldsByTitleValidator,
 } from "../validators/worlds.validator"
 
 const worldsRouter = Router()
@@ -16,6 +17,7 @@ const worldPlayersController = new WorldPlayersController()
 worldsRouter.use(ensureAuthenticated)
 
 worldsRouter.get("/:id", worldsController.show)
+worldsRouter.get("/", listWorldsByTitleValidator, worldsController.index)
 
 worldsRouter.post("/", createWorldValidator, worldsController.create)
 

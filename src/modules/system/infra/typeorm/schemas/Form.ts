@@ -8,40 +8,40 @@ class Form {
   currencies: string[]
 
   @Column({ type: "boolean", default: true })
-  hasMana: boolean
+  hasMana = true
 
   @Column({ type: "boolean", default: true })
-  hasAllignment: boolean
+  hasAllignment = true
 
   @Column({ type: "boolean", default: true })
-  hasExp: boolean
+  hasExp = true
 
   @Column({ type: "boolean", default: true })
-  hasBackground: boolean
+  hasBackground = true
 
   @Column({ type: "boolean", default: true })
-  hasRace: boolean
+  hasRace = true
 
   @Column({ type: "boolean", default: true })
-  hasLevel: boolean
+  hasLevel = true
 
   @Column({ type: "boolean", default: true })
-  hasClass: boolean
+  hasClass = true
 
   @Column({ type: "boolean", default: true })
-  hasInitiative: boolean
+  hasInitiative = true
 
   @Column({ type: "boolean", default: true })
-  hasSpeed: boolean
+  hasSpeed = true
 
   @Column({ type: "boolean", default: true })
-  hasPerception: boolean
+  hasPerception = true
 
   @Column({ type: "boolean", default: true })
-  hasArmor: boolean
+  hasArmor = true
 
   @Column({ type: "boolean", default: true })
-  hasSavingThrows: boolean
+  hasSavingThrows = true
 }
 
 export default Form

@@ -1,7 +1,10 @@
 import { v4 as uuid } from "uuid"
 
 import CreateWorldDTO from "@modules/worlds/dtos/CreateWorldDTO"
-import WorldsRepositoryInterface from "@modules/worlds/repositories/WorldsRepositoryInterface"
+import FindAllByTitleDTO from "@modules/worlds/dtos/FindAllByTitleDTO"
+import WorldsRepositoryInterface, {
+  findAllByTitleResponse,
+} from "@modules/worlds/repositories/WorldsRepositoryInterface"
 
 import World from "../infra/typeorm/entities/World"
 
@@ -14,18 +17,25 @@ class FakeWorldsRepository implements WorldsRepositoryInterface {
     return worldFound
   }
 
-  public async findByTitle(title: string): Promise<[World[], number]> {
+  public async findAllByTitle({
+    title,
+    page,
+    perPage,
+  }: FindAllByTitleDTO): Promise<findAllByTitleResponse> {
     let count = 0
     const listOfWorlds: World[] = []
 
     this.worlds.forEach((world) => {
       if (world.title.includes(title)) {
         ++count
-        listOfWorlds.push(world)
+
+        if (listOfWorlds.length < perPage) {
+          listOfWorlds.push(world)
+        }
       }
     })
 
-    return [listOfWorlds, count]
+    return { worlds: listOfWorlds, count, page }
   }
 
   public async create(worldData: CreateWorldDTO): Promise<World> {

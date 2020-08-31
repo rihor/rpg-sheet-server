@@ -21,3 +21,14 @@ export const createWorldPlayerValidator = celebrate(
   },
   { abortEarly: false }
 )
+
+export const listWorldsByTitleValidator = celebrate(
+  {
+    [Segments.QUERY]: {
+      title: Joi.string().min(2).trim().required(),
+      page: Joi.number().positive(),
+      perPage: Joi.number().positive(),
+    },
+  },
+  { abortEarly: false }
+)

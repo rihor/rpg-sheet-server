@@ -3,6 +3,7 @@ import { Request, Response } from "express"
 import { container } from "tsyringe"
 
 import CreateWorldService from "@modules/worlds/services/CreateWorldService"
+import ListWorldsService from "@modules/worlds/services/ListWorldsService"
 import ShowWorldService from "@modules/worlds/services/ShowWorldService"
 
 export default class WorldsController {
@@ -33,5 +34,19 @@ export default class WorldsController {
     })
 
     return response.status(200).json(classToClass(world))
+  }
+
+  public async index(request: Request, response: Response): Promise<Response> {
+    const { title, page = 1, perPage = 10 } = request.query
+
+    const listWorlds = container.resolve(ListWorldsService)
+
+    const worlds = await listWorlds.execute({
+      title: String(title),
+      page: Number(page),
+      perPage: Number(perPage),
+    })
+
+    return response.status(200).json(worlds)
   }
 }
