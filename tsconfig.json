@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "es5",
     "module": "commonjs",
-    "outDir": "./dist",
+    "outDir": "./build",
     "rootDir": "./src",
     "strict": true,
     "strictPropertyInitialization": false,
@@ -19,5 +19,5 @@
     "allowJs": true
   },
   "include": ["src"],
-  "exclude": ["coverage", "dist", "jest.config.js"]
+  "exclude": ["node_modules", "coverage", "build", "dist", "jest.config.js"]
 }
