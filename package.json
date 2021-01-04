@@ -6,7 +6,7 @@
   "author": "Pedro Pinho",
   "license": "MIT",
   "scripts": {
-    "build": "babel src --extensions \".js,.ts\" --out-dir build --copy-files",
+    "build": "babel src --extensions \".js,.ts\" --out-dir build --copy-files && yarn typeorm migration:run",
     "start": "cross-env NODE_ENV=production node ./build/shared/infra/web/index.js",
     "start:dev": "tsnd --transpile-only -r tsconfig-paths/register --inspect -- src/shared/infra/web/index.ts",
     "typeorm": "tsnd --transpile-only -r tsconfig-paths/register ./node_modules/typeorm/cli.js",
